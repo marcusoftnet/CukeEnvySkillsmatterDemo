@@ -15,9 +15,13 @@ namespace CukeEnvySkillsmatterDemo.Web
 
                         // Authenticate
                         tellerService.Authenticate(accountNo, pin);
-                        tellerService.Withdraw(accountNo, amount);
                         
-                        return HttpStatusCode.Accepted;
+                        var receipt = tellerService.Withdraw(accountNo, amount);
+
+                        return Negotiate
+                            .WithStatusCode(HttpStatusCode.Accepted)
+                            .WithModel(receipt)
+                            .WithView("ATM");
                     };
 
             Get["/withdraw"] = _ => { return View["ATM"]; };

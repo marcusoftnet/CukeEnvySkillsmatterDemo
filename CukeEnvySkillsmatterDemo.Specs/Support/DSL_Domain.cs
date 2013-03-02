@@ -12,7 +12,7 @@ namespace CukeEnvySkillsmatterDemo.Specs.Support
         private static Account _account =
             new Account { Number = ACCOUNT_NO, Pin = PIN_CODE };
 
-            private static InMemoryCashDispenser _inMemoryCashDispenser =
+            private static ICashDispenser _cashDispenser =
                 new InMemoryCashDispenser();
 
         private static IAccountRepository _mockAccountRepository =
@@ -34,7 +34,7 @@ namespace CukeEnvySkillsmatterDemo.Specs.Support
             // Create the teller service
             var teller = new TellerService(
                             _mockAccountRepository,
-                            _inMemoryCashDispenser);
+                            _cashDispenser);
 
             // Authenicate and withdraw
             teller.Authenticate(_account.Number, _account.Pin);
@@ -45,7 +45,7 @@ namespace CukeEnvySkillsmatterDemo.Specs.Support
         {
             Assert.AreEqual(
                 expectedAmount,
-                _inMemoryCashDispenser.DispenserContents);
+                _cashDispenser.DispenserContents);
         }
 
         public static void AccountBalanceShouldBe(int expectedBalance)

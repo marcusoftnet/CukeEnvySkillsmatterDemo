@@ -31,8 +31,7 @@ namespace CukeEnvySkillsmatterDemo.Specs.Support
         public static void AmountShouldBeInTheDispenser(int expectedDispensedAmount)
         {
             // TODO: How to show the dispensed amount
-            //Assert.AreEqual(expectedDispensedAmount,
-            //                _pageWrapper.DispensedAmount);
+            _pageWrapper.AssertDispensedAmount(expectedDispensedAmount);
         }
 
         public static void AccountBalanceShouldBe(int expectedBalance)

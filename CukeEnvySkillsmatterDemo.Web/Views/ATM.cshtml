@@ -13,5 +13,15 @@
         <input type="submit" name="withdraw" id="withdraw" value="Withdraw">
     </form>
 
+    <hr />
+    @if (@Model != null)
+    {
+        <h2>Receipt for your withdraw</h2>
+        <strong>Receiptid:</strong>@Model.Id<br />
+        <strong>Dispensed:</strong><div class="dispensedAmount">@Model.DispensedAmount</div>
+
+        <p>You can now check the dispenser for <strong>$@Model.DispensedAmount</strong></p>
+        <p>It's all there... We promise!</p>
+    }
 </body>
 </html>

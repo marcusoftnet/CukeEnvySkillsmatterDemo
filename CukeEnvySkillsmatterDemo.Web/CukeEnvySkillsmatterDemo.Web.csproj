@@ -88,6 +88,7 @@
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\IAccountRepository.cs" />
     <Compile Include="Models\ICashDispenser.cs" />
+    <Compile Include="Models\Receipt.cs" />
     <Compile Include="Models\TellerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

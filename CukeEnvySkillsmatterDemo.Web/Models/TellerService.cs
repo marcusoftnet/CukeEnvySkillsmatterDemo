@@ -1,4 +1,6 @@
-﻿namespace CukeEnvySkillsmatterDemo.Web.Models
+﻿using System;
+
+namespace CukeEnvySkillsmatterDemo.Web.Models
 {
     public class TellerService
     {
@@ -19,11 +21,30 @@
             _account = _accountRepository.GetForLogin(number, pin);
         }
 
-        public void Withdraw(string number, int amount)
+        public Receipt Withdraw(string number, int amount)
         {
             _account.Balance -= amount;
             _accountRepository.Update(_account);
             _dispenser.Dispense(amount);
+
+            return new Receipt(amount);
+        }
+    }
+
+    public class Receipt
+    {
+        public Guid Id { get; set; }
+        public int DispensedAmount { get; set; }
+
+        public Receipt()
+        {
+            Id = Guid.NewGuid();
+        }
+
+        public Receipt(int dispensedAmount)
+        {
+            Id = Guid.NewGuid();
+            DispensedAmount = dispensedAmount;
         }
     }
 }

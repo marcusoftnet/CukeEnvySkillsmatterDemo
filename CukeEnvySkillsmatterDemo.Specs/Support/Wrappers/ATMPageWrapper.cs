@@ -1,4 +1,5 @@
-﻿using FluentAutomation;
+﻿using System;
+using FluentAutomation;
 
 namespace CukeEnvySkillsmatterDemo.Specs.Support.Wrappers
 {
@@ -10,7 +11,8 @@ namespace CukeEnvySkillsmatterDemo.Specs.Support.Wrappers
         {
             SeleniumWebDriver.Bootstrap();
         }
-        
+
+
         public void Withdraw(string accountNo, string pinCode, int amount)
         {
             // Fill out the ATM-form
@@ -20,6 +22,13 @@ namespace CukeEnvySkillsmatterDemo.Specs.Support.Wrappers
             I.Enter(amount).In(".amountField");
 
             I.Click("#withdraw");
+        }
+
+        public void AssertDispensedAmount(int expectedDispensedAmount)
+        {
+            I.Expect
+                .Text(expectedDispensedAmount.ToString())
+                .In(".dispensedAmount");
         }
     }
 }
