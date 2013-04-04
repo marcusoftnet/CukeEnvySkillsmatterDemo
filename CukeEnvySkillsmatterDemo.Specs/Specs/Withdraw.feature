@@ -1,8 +1,8 @@
 ﻿Feature: Cash Withdrawal
-
- Scenario: Successfully withdrawal from an account in credit
+ 
+Scenario: Successfully withdrawal from an account in credit
     Given my account has a balance of $100
-    When I withdraw $20
+    When I withdraw $20		
     Then $20 should be dispensed
     And the balance of my account should be $80
 
@@ -14,5 +14,5 @@ Scenario Outline: Many successfully withdrawals from an account in credit
 
 Examples: 
 	| balance | withdraw amount | dispensed amount | new balance |
-	| 100     | 20              | 20               | 80          |
+	| 100     | 30              | 30               | 70          |
 	| 10      | 10              | 10               | 0           |

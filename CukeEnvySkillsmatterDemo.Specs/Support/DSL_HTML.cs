@@ -11,7 +11,7 @@ namespace CukeEnvySkillsmatterDemo.Specs.Support
         private const string PIN_CODE = "4321";
 
         private static dynamic _db = Database.Open();
-        private static ATMPageWrapper _pageWrapper;
+        private static ATMPageWrapper _pageWrapper  = new ATMPageWrapper();
 
         public static void SetAccountBalance(int amount)
         {
@@ -24,13 +24,11 @@ namespace CukeEnvySkillsmatterDemo.Specs.Support
 
         public static void Withdraw(int amount)
         {
-            _pageWrapper = new ATMPageWrapper();
             _pageWrapper.Withdraw(ACCOUNT_NO, PIN_CODE, amount);
         }
 
         public static void AmountShouldBeInTheDispenser(int expectedDispensedAmount)
         {
-            // TODO: How to show the dispensed amount
             _pageWrapper.AssertDispensedAmount(expectedDispensedAmount);
         }
 

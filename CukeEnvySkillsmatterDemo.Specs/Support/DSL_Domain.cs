@@ -9,15 +9,16 @@ namespace CukeEnvySkillsmatterDemo.Specs.Support
         private const string ACCOUNT_NO = "123456-123";
         private const string PIN_CODE = "4321";
 
-        private static Account _account =
-            new Account { Number = ACCOUNT_NO, Pin = PIN_CODE };
-
-            private static ICashDispenser _cashDispenser =
-                new InMemoryCashDispenser();
+        private static ICashDispenser _cashDispenser =
+            new InMemoryCashDispenser();
 
         private static IAccountRepository _mockAccountRepository =
             Substitute.For<IAccountRepository>();
+        
 
+        private static Account _account =
+            new Account { Number = ACCOUNT_NO, Pin = PIN_CODE };
+        
         public static void SetAccountBalance(int amount)
         {
             _account.Balance = amount;
@@ -43,15 +44,13 @@ namespace CukeEnvySkillsmatterDemo.Specs.Support
 
         public static void AmountShouldBeInTheDispenser(int expectedAmount)
         {
-            Assert.AreEqual(
-                expectedAmount,
+            Assert.AreEqual(expectedAmount,
                 _cashDispenser.DispenserContents);
         }
 
         public static void AccountBalanceShouldBe(int expectedBalance)
         {
-            Assert.AreEqual(
-                expectedBalance,
+            Assert.AreEqual(expectedBalance,
                 _account.Balance);
         }
     }

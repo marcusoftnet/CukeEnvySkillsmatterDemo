@@ -14,14 +14,12 @@
     </form>
 
     <hr />
-    @if (@Model != null)
-    {
-        <h2>Receipt for your withdraw</h2>
+           <h2>Receipt for your withdraw</h2>
         <strong>Receiptid:</strong>@Model.Id<br />
         <strong>Dispensed:</strong><div class="dispensedAmount">@Model.DispensedAmount</div>
 
         <p>You can now check the dispenser for <strong>$@Model.DispensedAmount</strong></p>
-        <p>It's all there... We promise!</p>
-    }
+        <br />
+        <div>It's all there... <div class="assurance">We promise!</div></div>
 </body>
 </html>

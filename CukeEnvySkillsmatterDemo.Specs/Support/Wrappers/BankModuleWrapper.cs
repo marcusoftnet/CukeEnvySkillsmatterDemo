@@ -13,11 +13,11 @@ namespace CukeEnvySkillsmatterDemo.Specs.Support.Wrappers
         public BankModuleWrapper(ICashDispenser cashDispenser)
         {
             _browser = new Browser(with =>
-                    {
-                        with.Module<BankModule>();
-                        with.Dependency<IAccountRepository>(new SQLServerAccountRepository());
-                        with.Dependency<ICashDispenser>(cashDispenser);
-                    });
+                {
+                    with.Module<BankModule>();
+                    with.Dependency<IAccountRepository>(new SQLServerAccountRepository());
+                    with.Dependency<ICashDispenser>(cashDispenser);
+                });
         }
 
         public void Withdraw(string accountNo, string pinCode, int amount)
@@ -32,6 +32,9 @@ namespace CukeEnvySkillsmatterDemo.Specs.Support.Wrappers
 
             // Make sure that we've got an Accepted back
             Assert.AreEqual(HttpStatusCode.Accepted, response.StatusCode);
+
+            // We could even assert against the view
+            //response.Body[".dispensedAmount"].ShouldContain(amount.ToString());
         }
     }
 }

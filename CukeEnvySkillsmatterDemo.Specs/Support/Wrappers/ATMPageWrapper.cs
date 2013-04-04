@@ -1,17 +1,15 @@
-﻿using System;
-using FluentAutomation;
+﻿using FluentAutomation;
 
 namespace CukeEnvySkillsmatterDemo.Specs.Support.Wrappers
 {
     public class ATMPageWrapper : FluentTest
     {
-        private string BASE_URL = "http://localhost:3179";
+        private const string BASE_URL = "http://localhost:3179";
 
         public ATMPageWrapper()
         {
             SeleniumWebDriver.Bootstrap();
         }
-
 
         public void Withdraw(string accountNo, string pinCode, int amount)
         {
@@ -29,6 +27,10 @@ namespace CukeEnvySkillsmatterDemo.Specs.Support.Wrappers
             I.Expect
                 .Text(expectedDispensedAmount.ToString())
                 .In(".dispensedAmount");
+
+            I.Expect
+                .Text("We promise!")
+                .In(".assurance");
         }
     }
 }

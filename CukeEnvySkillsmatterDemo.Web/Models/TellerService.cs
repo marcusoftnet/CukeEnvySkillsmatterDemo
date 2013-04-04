@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CukeEnvySkillsmatterDemo.Web.Models
+﻿namespace CukeEnvySkillsmatterDemo.Web.Models
 {
     public class TellerService
     {
@@ -8,7 +6,8 @@ namespace CukeEnvySkillsmatterDemo.Web.Models
         private IAccountRepository _accountRepository;
         private ICashDispenser _dispenser;
 
-        public TellerService(IAccountRepository accountRepository, ICashDispenser dispenser)
+        public TellerService(IAccountRepository accountRepository, 
+            ICashDispenser dispenser)
         {
             _accountRepository = accountRepository;
             _dispenser = dispenser;
@@ -28,23 +27,6 @@ namespace CukeEnvySkillsmatterDemo.Web.Models
             _dispenser.Dispense(amount);
 
             return new Receipt(amount);
-        }
-    }
-
-    public class Receipt
-    {
-        public Guid Id { get; set; }
-        public int DispensedAmount { get; set; }
-
-        public Receipt()
-        {
-            Id = Guid.NewGuid();
-        }
-
-        public Receipt(int dispensedAmount)
-        {
-            Id = Guid.NewGuid();
-            DispensedAmount = dispensedAmount;
         }
     }
 }

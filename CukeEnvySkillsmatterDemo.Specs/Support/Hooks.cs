@@ -9,8 +9,8 @@ namespace CukeEnvySkillsmatterDemo.Specs.Support
         [BeforeTestRun]
         public static void BeforeAnyFeature()
         {
-            // FOR IN MEMORY ADAPTERS
-            //Database.UseMockAdapter(new InMemoryAdapter());            
+            // FOR DSL_INMEMORY ONLY
+            // Database.UseMockAdapter(new InMemoryAdapter());            
         }
 
         [BeforeScenario]
