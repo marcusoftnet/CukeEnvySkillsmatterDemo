@@ -5,14 +5,16 @@ using Simple.Data;
 
 namespace CukeEnvySkillsmatterDemo.Specs.Support
 {
-    public class DSL_HTML
+    public class Driver_FullStack_InMemory
     {
         private const string ACCOUNT_NO = "123456-123";
         private const string PIN_CODE = "4321";
 
-        private static dynamic _db = Database.Open();
-        private static ATMPageWrapper _pageWrapper  = new ATMPageWrapper();
+        private static ICashDispenser _cashDispenser =
+            new InMemoryCashDispenser();
 
+        private static dynamic _db = Database.Open(); 
+        
         public static void SetAccountBalance(int amount)
         {
             var account = new Account { Balance = amount,
@@ -24,12 +26,15 @@ namespace CukeEnvySkillsmatterDemo.Specs.Support
 
         public static void Withdraw(int amount)
         {
-            _pageWrapper.Withdraw(ACCOUNT_NO, PIN_CODE, amount);
+            // Create automator that posts to the web-site
+            var bankModuleWrapper = new BankModuleWrapper(_cashDispenser);
+            bankModuleWrapper.Withdraw(ACCOUNT_NO, PIN_CODE, amount);
         }
 
         public static void AmountShouldBeInTheDispenser(int expectedDispensedAmount)
         {
-            _pageWrapper.AssertDispensedAmount(expectedDispensedAmount);
+            Assert.AreEqual(expectedDispensedAmount,
+                _cashDispenser.DispenserContents);
         }
 
         public static void AccountBalanceShouldBe(int expectedBalance)

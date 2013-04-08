@@ -1,7 +1,7 @@
 ﻿using TechTalk.SpecFlow;
-//using DSL = CukeEnvySkillsmatterDemo.Specs.Support.DSL_Domain;
-//using DSL = CukeEnvySkillsmatterDemo.Specs.Support.DSL_FullStack_InMemory;
-using DSL = CukeEnvySkillsmatterDemo.Specs.Support.DSL_HTML;
+using Driver = CukeEnvySkillsmatterDemo.Specs.Support.Driver_Domain;
+//using Driver = CukeEnvySkillsmatterDemo.Specs.Support.Driver_FullStack_InMemory;
+//using Driver = CukeEnvySkillsmatterDemo.Specs.Support.Driver_HTML;
 
 namespace CukeEnvySkillsmatterDemo.Specs.Steps
 {
@@ -9,33 +9,27 @@ namespace CukeEnvySkillsmatterDemo.Specs.Steps
     public class WithdrawSteps
     {
         [Given(@"my account has a balance of \$(.*)")]
-        [Given(@"my account has a balance of \$(.*)"), Scope()]
         public void a(int amount)
         {
-            DSL.SetAccountBalance(amount);
-        }
-
-        public void a(int amount)
-        {
-            DSL.SetAccountBalance(amount);
+            Driver.SetAccountBalance(amount);
         }
 
         [When(@"I withdraw \$(.*)")]
         public void b(int amount)
         {
-            DSL.Withdraw(amount);
+            Driver.Withdraw(amount);
         }
 
         [Then(@"\$(.*) should be dispensed")]
         public void c(int amount)
         {
-            DSL.AmountShouldBeInTheDispenser(amount);
+            Driver.AmountShouldBeInTheDispenser(amount);
         }
 
         [Then(@"the balance of my account should be \$(.*)")]
         public void d(int amount)
         {
-            DSL.AccountBalanceShouldBe(amount);
+            Driver.AccountBalanceShouldBe(amount);
         }
 
     }

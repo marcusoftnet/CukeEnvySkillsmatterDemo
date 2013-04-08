@@ -99,9 +99,9 @@
       <DependentUpon>Withdraw.feature</DependentUpon>
     </Compile>
     <Compile Include="Steps\WithdrawSteps.cs" />
-    <Compile Include="Support\DSL_Domain.cs" />
-    <Compile Include="Support\DSL_FullStack_InMemory.cs" />
-    <Compile Include="Support\DSL_HTML.cs" />
+    <Compile Include="Support\Driver_Domain.cs" />
+    <Compile Include="Support\Driver_FullStack_InMemory.cs" />
+    <Compile Include="Support\Driver_HTML.cs" />
     <Compile Include="Support\Hooks.cs" />
     <Compile Include="Support\Wrappers\ATMPageWrapper.cs" />
     <Compile Include="Support\Wrappers\BankModuleWrapper.cs" />

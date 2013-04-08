@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace CukeEnvySkillsmatterDemo.Specs.Support
 {
-    public static class DSL_Domain
+    public static class Driver_Domain
     {
         private const string ACCOUNT_NO = "123456-123";
         private const string PIN_CODE = "4321";
