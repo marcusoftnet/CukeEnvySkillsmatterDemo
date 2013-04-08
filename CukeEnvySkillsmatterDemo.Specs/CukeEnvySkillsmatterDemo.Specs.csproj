@@ -99,6 +99,7 @@
       <DependentUpon>Withdraw.feature</DependentUpon>
     </Compile>
     <Compile Include="Steps\WithdrawSteps.cs" />
+    <Compile Include="Support\Builders\AccountBuilder.cs" />
     <Compile Include="Support\Driver_Domain.cs" />
     <Compile Include="Support\Driver_FullStack_InMemory.cs" />
     <Compile Include="Support\Driver_HTML.cs" />
