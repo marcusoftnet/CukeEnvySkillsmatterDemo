@@ -8,11 +8,14 @@ namespace CukeEnvySkillsmatterDemo.Specs.Support.Wrappers
 
         public ATMPageWrapper()
         {
-            SeleniumWebDriver.Bootstrap();
+            SeleniumWebDriver.Bootstrap(SeleniumWebDriver.Browser.PhantomJs);
+            Settings.ScreenshotPath = @"C:\temp\results";
         }
 
         public void Withdraw(string accountNo, string pinCode, int amount)
         {
+            I.TakeScreenshot("Start");
+
             // Fill out the ATM-form
             I.Open(BASE_URL + "/withdraw");
             I.Enter(accountNo).In("input#accountNo");
@@ -31,6 +34,9 @@ namespace CukeEnvySkillsmatterDemo.Specs.Support.Wrappers
             I.Expect
                 .Text("We promise!")
                 .In(".assurance");
+
+            I.TakeScreenshot("Result");
+
         }
     }
 }
